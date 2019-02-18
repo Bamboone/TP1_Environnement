@@ -26,10 +26,11 @@ public class Fenetre extends JFrame {
 	private JMenuItem optionNouveau, optionEnregistrer, optionEnregistrerSous, optionOuvrir, optionQuitter,
 			optionAPropos;
 	private JToolBar barreOutils;
-	private ButtonGroup groupeFormes, groupePinceaux;
+	private ButtonGroup groupeFormes, groupePinceaux, groupeSeaux;
 	private JToggleButton boutonOvale, boutonRectangle, boutonTrait;
 	private JToggleButton boutonPinceauBleuClair, boutonPinceauBleuMarin, boutonPinceauJaune, boutonPinceauMauve,
 			boutonPinceauNoir, boutonPinceauOrange;
+	private JToggleButton boutonSeauRouge, boutonSeauRose, boutonSeauVert, boutonSeauNoir, boutonSeauJaune, boutonSeauBleu; 
 
 	public Fenetre() {
 		super( "FakePaint" );
@@ -156,12 +157,12 @@ public class Fenetre extends JFrame {
 		boutonPinceauNoir = new JToggleButton(imagePinceauxNoir);
 		boutonPinceauOrange = new JToggleButton(imagePinceauxOrange);
 		
-		boutonPinceauBleuClair.setToolTipText( "Pinceau bleu clair" );
-		boutonPinceauBleuMarin.setToolTipText( "Pinceau bleu marin" );
-		boutonPinceauJaune.setToolTipText( "Pinceau jaune" );
-		boutonPinceauMauve.setToolTipText( "Pinceau mauve" );
-		boutonPinceauNoir.setToolTipText( "Pinceau noir" );
-		boutonPinceauOrange.setToolTipText( "Pinceau orange" );
+		boutonPinceauBleuClair.setToolTipText( "Contour bleu clair" );
+		boutonPinceauBleuMarin.setToolTipText( "Contour bleu marin" );
+		boutonPinceauJaune.setToolTipText( "Contour jaune" );
+		boutonPinceauMauve.setToolTipText( "Contour mauve" );
+		boutonPinceauNoir.setToolTipText( "Contour noir" );
+		boutonPinceauOrange.setToolTipText( "Contour orange" );
 		
 		groupePinceaux.add( boutonPinceauBleuClair );
 		groupePinceaux.add( boutonPinceauBleuMarin );
@@ -176,6 +177,67 @@ public class Fenetre extends JFrame {
 		barreOutils.add( boutonPinceauMauve );
 		barreOutils.add( boutonPinceauNoir );
 		barreOutils.add( boutonPinceauOrange );
+		barreOutils.addSeparator();
+		
+		ImageIcon imageSeauRouge = new ImageIcon( Fenetre.class.getResource( "images/fillrouge.png" ) );
+		image = imageSeauRouge.getImage();
+		image = image.getScaledInstance( 20, 25, Image.SCALE_SMOOTH );
+		imageSeauRouge = new ImageIcon( image );
+		
+		ImageIcon imageSeauRose = new ImageIcon( Fenetre.class.getResource( "images/fillrose.png" ) );
+		image = imageSeauRose.getImage();
+		image = image.getScaledInstance( 20, 25, Image.SCALE_SMOOTH );
+		imageSeauRose = new ImageIcon( image );
+		
+		ImageIcon imageSeauVert = new ImageIcon( Fenetre.class.getResource( "images/fillvert.png" ) );
+		image = imageSeauVert.getImage();
+		image = image.getScaledInstance( 20, 25, Image.SCALE_SMOOTH );
+		imageSeauVert = new ImageIcon( image );
+		
+		ImageIcon imageSeauNoir = new ImageIcon( Fenetre.class.getResource( "images/fillnoir.png" ) );
+		image = imageSeauNoir.getImage();
+		image = image.getScaledInstance( 20, 25, Image.SCALE_SMOOTH );
+		imageSeauNoir = new ImageIcon( image );
+		
+		ImageIcon imageSeauJaune = new ImageIcon( Fenetre.class.getResource( "images/filljaune.png" ) );
+		image = imageSeauJaune.getImage();
+		image = image.getScaledInstance( 20, 25, Image.SCALE_SMOOTH );
+		imageSeauJaune = new ImageIcon( image );
+		
+		ImageIcon imageSeauBleu = new ImageIcon( Fenetre.class.getResource( "images/fillbleu.png" ) );
+		image = imageSeauBleu.getImage();
+		image = image.getScaledInstance( 20, 25, Image.SCALE_SMOOTH );
+		imageSeauBleu = new ImageIcon( image );
+		
+		boutonSeauRouge = new JToggleButton( imageSeauRouge );
+		boutonSeauRose = new JToggleButton( imageSeauRose );
+		boutonSeauVert = new JToggleButton( imageSeauVert );
+		boutonSeauNoir = new JToggleButton( imageSeauNoir );
+		boutonSeauJaune = new JToggleButton( imageSeauJaune );
+		boutonSeauBleu = new JToggleButton( imageSeauBleu );
+		
+		boutonSeauRouge.setToolTipText( "Remplissage rouge" );
+		boutonSeauRose.setToolTipText( "Remplissage rose" );
+		boutonSeauVert.setToolTipText( "Remplissage vert" );
+		boutonSeauNoir.setToolTipText( "Remplissage noir" );
+		boutonSeauJaune.setToolTipText( "Remplissage jaune" );
+		boutonSeauBleu.setToolTipText( "Remplissage bleu" );
+		
+		groupeSeaux = new ButtonGroup();
+		
+		groupeSeaux.add( boutonSeauRouge );
+		groupeSeaux.add( boutonSeauRose );
+		groupeSeaux.add( boutonSeauVert );
+		groupeSeaux.add( boutonSeauNoir );
+		groupeSeaux.add( boutonSeauJaune );
+		groupeSeaux.add( boutonSeauBleu );
+		
+		barreOutils.add( boutonSeauRouge);
+		barreOutils.add( boutonSeauRose);
+		barreOutils.add( boutonSeauVert);
+		barreOutils.add( boutonSeauNoir);
+		barreOutils.add( boutonSeauJaune);
+		barreOutils.add( boutonSeauBleu);
 		
 		
 
