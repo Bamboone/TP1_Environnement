@@ -1,6 +1,8 @@
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.Image;
+import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.InputEvent;
@@ -26,15 +28,19 @@ public class Fenetre extends JFrame {
 	private JMenuItem optionNouveau, optionEnregistrer, optionEnregistrerSous, optionOuvrir, optionQuitter,
 			optionAPropos;
 	private JToolBar barreOutils;
-	private ButtonGroup groupeFormes, groupePinceaux, groupeSeaux;
+	private ButtonGroup groupeFormes, groupeContour, groupeSeaux;
 	private JToggleButton boutonOvale, boutonRectangle, boutonTrait;
 	private JToggleButton boutonPinceauBleuClair, boutonPinceauBleuMarin, boutonPinceauJaune, boutonPinceauMauve,
 			boutonPinceauNoir, boutonPinceauOrange;
-	private JToggleButton boutonSeauRouge, boutonSeauRose, boutonSeauVert, boutonSeauNoir, boutonSeauJaune, boutonSeauBleu; 
+	private JToggleButton boutonSeauRouge, boutonSeauRose, boutonSeauVert, boutonSeauNoir, boutonSeauJaune,
+			boutonSeauBleu;
+	private final int NB_BOUTONS = 15;
 
 	public Fenetre() {
 		super( "FakePaint" );
 		setSize( 800, 800 );
+		Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
+		setLocation( dim.width / 2 - this.getSize().width / 2, dim.height / 2 - this.getSize().height / 2 );
 		barreMenu = createMenuBar();
 
 		setJMenuBar( barreMenu );
@@ -84,8 +90,47 @@ public class Fenetre extends JFrame {
 	private JToolBar createToolbar() {
 		barreOutils = new JToolBar();
 		groupeFormes = new ButtonGroup();
+		groupeContour = new ButtonGroup();
+		groupeSeaux = new ButtonGroup();
 		Image image;
 
+		ImageIcon[] tabImages = new ImageIcon[NB_BOUTONS];
+		String[] lienImages = { "images/ovale.jpg", "images/rectangle.jpg", "images/trait.jpg", "images/bleuclair.jpg",
+				"images/bleumarin.jpg", "images/jaune.jpg", "images/mauve.jpg", "images/noir.jpg", "images/orange.jpg",
+				"images/fillrouge.png", "images/fillrose.png", "images/fillvert.png", "images/fillnoir.png",
+				"images/filljaune.png", "images/fillbleu.png" };
+		JToggleButton[] tabBoutons = new JToggleButton[NB_BOUTONS];
+		String[] tabToolTips = { "Ovale", "Rectangle", "Trait", "Contour bleu clair", "Contour bleu marin", 
+				"Contour jaune", "Contour mauve", "Contour noir", "Contour orange", "Remplissage rouge", 
+				"Remplissage rose", "Remplissage vert", "Remplissage noir", "Remplissage jaune", "Remplissage bleu"};
+		
+		for(int i=0; i<NB_BOUTONS; i++) {
+			tabImages[i] = new ImageIcon( Fenetre.class.getResource(lienImages[i]) );
+			image = tabImages[i].getImage();
+			image = image.getScaledInstance( 20, 25, Image.SCALE_SMOOTH );
+			tabImages[i] = new ImageIcon( image );
+		}
+		for(int i=0; i<NB_BOUTONS; i++) {
+			tabBoutons[i] = new JToggleButton(tabImages[i]);
+		}
+		for(int i=0; i<3; i++) {
+			groupeFormes.add( tabBoutons[i] );
+			tabBoutons[i].setToolTipText( tabToolTips[i] );
+			barreOutils.add( tabBoutons[i] );
+		}
+		barreOutils.addSeparator();
+		for(int i=3; i<9; i++) {
+			groupeContour.add( tabBoutons[i] );
+			tabBoutons[i].setToolTipText( tabToolTips[i] );
+			barreOutils.add( tabBoutons[i]);
+		}
+		barreOutils.addSeparator();
+		for(int i=9; i<NB_BOUTONS; i++) {
+			groupeSeaux.add( tabBoutons[i] );
+			tabBoutons[i].setToolTipText( tabToolTips[i] );
+			barreOutils.add( tabBoutons[i]);
+		}
+/*
 		ImageIcon imageOvale = new ImageIcon( Fenetre.class.getResource( "images/ovale.jpg" ) );
 		image = imageOvale.getImage();
 		image = image.getScaledInstance( 20, 25, Image.SCALE_SMOOTH );
@@ -117,60 +162,60 @@ public class Fenetre extends JFrame {
 		barreOutils.add( boutonRectangle );
 		barreOutils.add( boutonTrait );
 		barreOutils.addSeparator();
+
 		
-		groupePinceaux = new ButtonGroup();
-		
+
 		ImageIcon imagePinceauxBleuClair = new ImageIcon( Fenetre.class.getResource( "images/bleuclair.jpg" ) );
 		image = imagePinceauxBleuClair.getImage();
 		image = image.getScaledInstance( 20, 25, Image.SCALE_SMOOTH );
 		imagePinceauxBleuClair = new ImageIcon( image );
-		
+
 		ImageIcon imagePinceauxBleuMarin = new ImageIcon( Fenetre.class.getResource( "images/bleumarin.jpg" ) );
 		image = imagePinceauxBleuMarin.getImage();
 		image = image.getScaledInstance( 20, 25, Image.SCALE_SMOOTH );
 		imagePinceauxBleuMarin = new ImageIcon( image );
-		
+
 		ImageIcon imagePinceauxJaune = new ImageIcon( Fenetre.class.getResource( "images/jaune.jpg" ) );
 		image = imagePinceauxJaune.getImage();
 		image = image.getScaledInstance( 20, 25, Image.SCALE_SMOOTH );
 		imagePinceauxJaune = new ImageIcon( image );
-		
+
 		ImageIcon imagePinceauxMauve = new ImageIcon( Fenetre.class.getResource( "images/mauve.jpg" ) );
 		image = imagePinceauxMauve.getImage();
 		image = image.getScaledInstance( 20, 25, Image.SCALE_SMOOTH );
 		imagePinceauxMauve = new ImageIcon( image );
-		
+
 		ImageIcon imagePinceauxNoir = new ImageIcon( Fenetre.class.getResource( "images/noir.jpg" ) );
 		image = imagePinceauxNoir.getImage();
 		image = image.getScaledInstance( 20, 25, Image.SCALE_SMOOTH );
 		imagePinceauxNoir = new ImageIcon( image );
-		
+
 		ImageIcon imagePinceauxOrange = new ImageIcon( Fenetre.class.getResource( "images/orange.jpg" ) );
 		image = imagePinceauxOrange.getImage();
 		image = image.getScaledInstance( 20, 25, Image.SCALE_SMOOTH );
 		imagePinceauxOrange = new ImageIcon( image );
-		
+
 		boutonPinceauBleuClair = new JToggleButton( imagePinceauxBleuClair );
-		boutonPinceauBleuMarin = new JToggleButton(imagePinceauxBleuMarin);
-		boutonPinceauJaune = new JToggleButton(imagePinceauxJaune);
-		boutonPinceauMauve = new JToggleButton(imagePinceauxMauve);
-		boutonPinceauNoir = new JToggleButton(imagePinceauxNoir);
-		boutonPinceauOrange = new JToggleButton(imagePinceauxOrange);
-		
+		boutonPinceauBleuMarin = new JToggleButton( imagePinceauxBleuMarin );
+		boutonPinceauJaune = new JToggleButton( imagePinceauxJaune );
+		boutonPinceauMauve = new JToggleButton( imagePinceauxMauve );
+		boutonPinceauNoir = new JToggleButton( imagePinceauxNoir );
+		boutonPinceauOrange = new JToggleButton( imagePinceauxOrange );
+
 		boutonPinceauBleuClair.setToolTipText( "Contour bleu clair" );
 		boutonPinceauBleuMarin.setToolTipText( "Contour bleu marin" );
 		boutonPinceauJaune.setToolTipText( "Contour jaune" );
 		boutonPinceauMauve.setToolTipText( "Contour mauve" );
 		boutonPinceauNoir.setToolTipText( "Contour noir" );
 		boutonPinceauOrange.setToolTipText( "Contour orange" );
-		
+
 		groupePinceaux.add( boutonPinceauBleuClair );
 		groupePinceaux.add( boutonPinceauBleuMarin );
 		groupePinceaux.add( boutonPinceauJaune );
 		groupePinceaux.add( boutonPinceauMauve );
 		groupePinceaux.add( boutonPinceauNoir );
 		groupePinceaux.add( boutonPinceauOrange );
-		
+
 		barreOutils.add( boutonPinceauBleuClair );
 		barreOutils.add( boutonPinceauBleuMarin );
 		barreOutils.add( boutonPinceauJaune );
@@ -178,68 +223,66 @@ public class Fenetre extends JFrame {
 		barreOutils.add( boutonPinceauNoir );
 		barreOutils.add( boutonPinceauOrange );
 		barreOutils.addSeparator();
-		
+
 		ImageIcon imageSeauRouge = new ImageIcon( Fenetre.class.getResource( "images/fillrouge.png" ) );
 		image = imageSeauRouge.getImage();
 		image = image.getScaledInstance( 20, 25, Image.SCALE_SMOOTH );
 		imageSeauRouge = new ImageIcon( image );
-		
+
 		ImageIcon imageSeauRose = new ImageIcon( Fenetre.class.getResource( "images/fillrose.png" ) );
 		image = imageSeauRose.getImage();
 		image = image.getScaledInstance( 20, 25, Image.SCALE_SMOOTH );
 		imageSeauRose = new ImageIcon( image );
-		
+
 		ImageIcon imageSeauVert = new ImageIcon( Fenetre.class.getResource( "images/fillvert.png" ) );
 		image = imageSeauVert.getImage();
 		image = image.getScaledInstance( 20, 25, Image.SCALE_SMOOTH );
 		imageSeauVert = new ImageIcon( image );
-		
+
 		ImageIcon imageSeauNoir = new ImageIcon( Fenetre.class.getResource( "images/fillnoir.png" ) );
 		image = imageSeauNoir.getImage();
 		image = image.getScaledInstance( 20, 25, Image.SCALE_SMOOTH );
 		imageSeauNoir = new ImageIcon( image );
-		
+
 		ImageIcon imageSeauJaune = new ImageIcon( Fenetre.class.getResource( "images/filljaune.png" ) );
 		image = imageSeauJaune.getImage();
 		image = image.getScaledInstance( 20, 25, Image.SCALE_SMOOTH );
 		imageSeauJaune = new ImageIcon( image );
-		
+
 		ImageIcon imageSeauBleu = new ImageIcon( Fenetre.class.getResource( "images/fillbleu.png" ) );
 		image = imageSeauBleu.getImage();
 		image = image.getScaledInstance( 20, 25, Image.SCALE_SMOOTH );
 		imageSeauBleu = new ImageIcon( image );
-		
+
 		boutonSeauRouge = new JToggleButton( imageSeauRouge );
 		boutonSeauRose = new JToggleButton( imageSeauRose );
 		boutonSeauVert = new JToggleButton( imageSeauVert );
 		boutonSeauNoir = new JToggleButton( imageSeauNoir );
 		boutonSeauJaune = new JToggleButton( imageSeauJaune );
 		boutonSeauBleu = new JToggleButton( imageSeauBleu );
-		
+
 		boutonSeauRouge.setToolTipText( "Remplissage rouge" );
 		boutonSeauRose.setToolTipText( "Remplissage rose" );
 		boutonSeauVert.setToolTipText( "Remplissage vert" );
 		boutonSeauNoir.setToolTipText( "Remplissage noir" );
 		boutonSeauJaune.setToolTipText( "Remplissage jaune" );
 		boutonSeauBleu.setToolTipText( "Remplissage bleu" );
-		
+
 		groupeSeaux = new ButtonGroup();
-		
+
 		groupeSeaux.add( boutonSeauRouge );
 		groupeSeaux.add( boutonSeauRose );
 		groupeSeaux.add( boutonSeauVert );
 		groupeSeaux.add( boutonSeauNoir );
 		groupeSeaux.add( boutonSeauJaune );
 		groupeSeaux.add( boutonSeauBleu );
-		
-		barreOutils.add( boutonSeauRouge);
-		barreOutils.add( boutonSeauRose);
-		barreOutils.add( boutonSeauVert);
-		barreOutils.add( boutonSeauNoir);
-		barreOutils.add( boutonSeauJaune);
-		barreOutils.add( boutonSeauBleu);
-		
-		
+
+		barreOutils.add( boutonSeauRouge );
+		barreOutils.add( boutonSeauRose );
+		barreOutils.add( boutonSeauVert );
+		barreOutils.add( boutonSeauNoir );
+		barreOutils.add( boutonSeauJaune );
+		barreOutils.add( boutonSeauBleu );*/
 
 		return barreOutils;
 	}
