@@ -30,10 +30,12 @@ public class Fenetre extends JFrame {
 	private JToolBar barreOutils;
 	private ButtonGroup groupeFormes, groupeContour, groupeSeaux;
 	private final int NB_BOUTONS = 15;
+	private JPanel panDessin;
 
 	public Fenetre() {
-		super( "FakePaint" );
+		super( "Sans titre - FakePaint" );
 		setSize( 800, 800 );
+		setIconImage( ( new ImageIcon( Fenetre.class.getResource( "images/iconeApplication.png" ) ).getImage() ) );
 		Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
 		setLocation( dim.width / 2 - this.getSize().width / 2, dim.height / 2 - this.getSize().height / 2 );
 		barreMenu = createMenuBar();
@@ -43,6 +45,10 @@ public class Fenetre extends JFrame {
 		barreOutils = createToolbar();
 		barreOutils.setFloatable( false );
 		add( barreOutils, BorderLayout.NORTH );
+
+		panDessin = new JPanel();
+
+		add( panDessin );
 
 		setDefaultCloseOperation( JFrame.EXIT_ON_CLOSE );
 
@@ -83,6 +89,7 @@ public class Fenetre extends JFrame {
 	}
 
 	private JToolBar createToolbar() {
+
 		barreOutils = new JToolBar();
 		groupeFormes = new ButtonGroup();
 		groupeContour = new ButtonGroup();
@@ -95,35 +102,35 @@ public class Fenetre extends JFrame {
 				"images/fillrouge.png", "images/fillrose.png", "images/fillvert.png", "images/fillnoir.png",
 				"images/filljaune.png", "images/fillbleu.png" };
 		JToggleButton[] tabBoutons = new JToggleButton[NB_BOUTONS];
-		String[] tabToolTips = { "Ovale", "Rectangle", "Trait", "Contour bleu clair", "Contour bleu marin", 
-				"Contour jaune", "Contour mauve", "Contour noir", "Contour orange", "Remplissage rouge", 
-				"Remplissage rose", "Remplissage vert", "Remplissage noir", "Remplissage jaune", "Remplissage bleu"};
-		
-		for(int i=0; i<NB_BOUTONS; i++) {
-			tabImages[i] = new ImageIcon( Fenetre.class.getResource(lienImages[i]) );
+		String[] tabToolTips = { "Ovale", "Rectangle", "Trait", "Contour bleu clair", "Contour bleu marin",
+				"Contour jaune", "Contour mauve", "Contour noir", "Contour orange", "Remplissage rouge",
+				"Remplissage rose", "Remplissage vert", "Remplissage noir", "Remplissage jaune", "Remplissage bleu" };
+
+		for ( int i = 0; i < NB_BOUTONS; i++ ) {
+			tabImages[i] = new ImageIcon( Fenetre.class.getResource( lienImages[i] ) );
 			image = tabImages[i].getImage();
 			image = image.getScaledInstance( 20, 25, Image.SCALE_SMOOTH );
 			tabImages[i] = new ImageIcon( image );
 		}
-		for(int i=0; i<NB_BOUTONS; i++) {
-			tabBoutons[i] = new JToggleButton(tabImages[i]);
-		}
-		for(int i=0; i<3; i++) {
+		for ( int i = 0; i < 3; i++ ) {
+			tabBoutons[i] = new JToggleButton( tabImages[i] );
 			groupeFormes.add( tabBoutons[i] );
 			tabBoutons[i].setToolTipText( tabToolTips[i] );
 			barreOutils.add( tabBoutons[i] );
 		}
 		barreOutils.addSeparator();
-		for(int i=3; i<9; i++) {
+		for ( int i = 3; i < 9; i++ ) {
+			tabBoutons[i] = new JToggleButton( tabImages[i] );
 			groupeContour.add( tabBoutons[i] );
 			tabBoutons[i].setToolTipText( tabToolTips[i] );
-			barreOutils.add( tabBoutons[i]);
+			barreOutils.add( tabBoutons[i] );
 		}
 		barreOutils.addSeparator();
-		for(int i=9; i<NB_BOUTONS; i++) {
+		for ( int i = 9; i < NB_BOUTONS; i++ ) {
+			tabBoutons[i] = new JToggleButton( tabImages[i] );
 			groupeSeaux.add( tabBoutons[i] );
 			tabBoutons[i].setToolTipText( tabToolTips[i] );
-			barreOutils.add( tabBoutons[i]);
+			barreOutils.add( tabBoutons[i] );
 		}
 
 		return barreOutils;
