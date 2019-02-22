@@ -7,7 +7,11 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.InputEvent;
 import java.awt.event.KeyEvent;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
+import java.beans.PropertyChangeListener;
 
+import javax.swing.Action;
 import javax.swing.ButtonGroup;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
@@ -19,7 +23,7 @@ import javax.swing.JToggleButton;
 import javax.swing.JToolBar;
 import javax.swing.KeyStroke;
 
-public class Fenetre extends JFrame {
+public class Fenetre extends JFrame implements AffichageConstantes{
 
 	private static final long serialVersionUID = 1L;
 
@@ -29,7 +33,6 @@ public class Fenetre extends JFrame {
 			optionAPropos;
 	private JToolBar barreOutils;
 	private ButtonGroup groupeFormes, groupeContour, groupeSeaux;
-	private final int NB_BOUTONS = 15;
 	private JPanel panDessin;
 
 	public Fenetre() {
@@ -46,7 +49,7 @@ public class Fenetre extends JFrame {
 		barreOutils.setFloatable( false );
 		add( barreOutils, BorderLayout.NORTH );
 
-		panDessin = new JPanel();
+		panDessin = new PanDessin();
 
 		add( panDessin );
 
@@ -97,14 +100,7 @@ public class Fenetre extends JFrame {
 		Image image;
 
 		ImageIcon[] tabImages = new ImageIcon[NB_BOUTONS];
-		String[] lienImages = { "images/ovale.jpg", "images/rectangle.jpg", "images/trait.jpg", "images/bleuclair.jpg",
-				"images/bleumarin.jpg", "images/jaune.jpg", "images/mauve.jpg", "images/noir.jpg", "images/orange.jpg",
-				"images/fillrouge.png", "images/fillrose.png", "images/fillvert.png", "images/fillnoir.png",
-				"images/filljaune.png", "images/fillbleu.png" };
 		JToggleButton[] tabBoutons = new JToggleButton[NB_BOUTONS];
-		String[] tabToolTips = { "Ovale", "Rectangle", "Trait", "Contour bleu clair", "Contour bleu marin",
-				"Contour jaune", "Contour mauve", "Contour noir", "Contour orange", "Remplissage rouge",
-				"Remplissage rose", "Remplissage vert", "Remplissage noir", "Remplissage jaune", "Remplissage bleu" };
 
 		for ( int i = 0; i < NB_BOUTONS; i++ ) {
 			tabImages[i] = new ImageIcon( Fenetre.class.getResource( lienImages[i] ) );
