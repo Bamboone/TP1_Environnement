@@ -58,7 +58,10 @@ public class PanDessin extends JPanel implements MouseListener, MouseMotionListe
 		super.paintComponent( g );
 		for ( Forme forme : liste ) {
 			forme.tracer( g );
-		}
+		
+		}	
+
+		
 		
 		if(formeCourante != null) {
 			formeCourante.tracer(g);
@@ -114,8 +117,11 @@ public class PanDessin extends JPanel implements MouseListener, MouseMotionListe
 	@Override
 	public void mouseReleased( MouseEvent e ) {
 
+		if(formeCourante !=null) {
 			liste.add( formeCourante );
-			repaint();
+			
+		}
+		repaint();
 
 
 		

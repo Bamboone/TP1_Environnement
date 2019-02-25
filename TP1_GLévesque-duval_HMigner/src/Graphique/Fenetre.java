@@ -113,6 +113,12 @@ public class Fenetre extends JFrame implements AffichageConstantes {
 			barreOutils.add( tabBoutons[i] );
 			tabBoutons[i].addActionListener( gestionnaire );
 		}
+		tabBoutons[0].setSelected( true );
+		tabBoutons[0].doClick();
+		tabBoutons[NB_FORMES].setSelected( true );
+		tabBoutons[NB_FORMES].doClick();
+		tabBoutons[NB_BOUTONS-NB_REMPLISSAGE].setSelected( true );
+		tabBoutons[NB_BOUTONS-NB_REMPLISSAGE].doClick();
 
 		return barreOutils;
 	}
