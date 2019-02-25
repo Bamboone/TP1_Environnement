@@ -16,9 +16,9 @@ public class PanDessin extends JPanel implements MouseListener, MouseMotionListe
 
 	private static final long serialVersionUID = 1L;
 
-	private Color contour = Color.WHITE;;
+	private Color contour;
 
-	private Color remplissage = Color.WHITE;
+	private Color remplissage;
 
 	private int typeFigure;
 
