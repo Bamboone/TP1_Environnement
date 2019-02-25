@@ -1,27 +1,14 @@
+package Graphique;
+
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Image;
 import java.awt.Toolkit;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.InputEvent;
-import java.awt.event.KeyEvent;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
+import java.awt.event.*;
 import java.beans.PropertyChangeListener;
 
-import javax.swing.Action;
-import javax.swing.ButtonGroup;
-import javax.swing.ImageIcon;
-import javax.swing.JFrame;
-import javax.swing.JMenu;
-import javax.swing.JMenuBar;
-import javax.swing.JMenuItem;
-import javax.swing.JPanel;
-import javax.swing.JToggleButton;
-import javax.swing.JToolBar;
-import javax.swing.KeyStroke;
+import javax.swing.*;
 
 public class Fenetre extends JFrame implements AffichageConstantes{
 
@@ -33,24 +20,27 @@ public class Fenetre extends JFrame implements AffichageConstantes{
 			optionAPropos;
 	private JToolBar barreOutils;
 	private ButtonGroup groupeFormes, groupeContour, groupeSeaux;
-	private JPanel panDessin;
+	private PanDessin panDessin;
+	private ImageIcon[] tabImages = new ImageIcon[NB_BOUTONS];
+	private JToggleButton[] tabBoutons = new JToggleButton[NB_BOUTONS];
+	private Listener gestionnaire;
 
 	public Fenetre() {
 		super( "Sans titre - FakePaint" );
 		setSize( 800, 800 );
-		setIconImage( ( new ImageIcon( Fenetre.class.getResource( "images/iconeApplication.png" ) ).getImage() ) );
+		setIconImage( ( new ImageIcon( Fenetre.class.getResource( "../images/iconeApplication.png" ) ).getImage() ) );
 		Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
 		setLocation( dim.width / 2 - this.getSize().width / 2, dim.height / 2 - this.getSize().height / 2 );
 		barreMenu = createMenuBar();
-
+		panDessin = new PanDessin();
 		setJMenuBar( barreMenu );
-
+		gestionnaire = new Listener( tabBoutons, panDessin );
 		barreOutils = createToolbar();
 		barreOutils.setFloatable( false );
 		add( barreOutils, BorderLayout.NORTH );
+		
 
-		panDessin = new PanDessin();
-
+		
 		add( panDessin );
 
 		setDefaultCloseOperation( JFrame.EXIT_ON_CLOSE );
@@ -99,8 +89,7 @@ public class Fenetre extends JFrame implements AffichageConstantes{
 		groupeSeaux = new ButtonGroup();
 		Image image;
 
-		ImageIcon[] tabImages = new ImageIcon[NB_BOUTONS];
-		JToggleButton[] tabBoutons = new JToggleButton[NB_BOUTONS];
+		
 
 		for ( int i = 0; i < NB_BOUTONS; i++ ) {
 			tabImages[i] = new ImageIcon( Fenetre.class.getResource( lienImages[i] ) );
@@ -113,6 +102,7 @@ public class Fenetre extends JFrame implements AffichageConstantes{
 			groupeFormes.add( tabBoutons[i] );
 			tabBoutons[i].setToolTipText( tabToolTips[i] );
 			barreOutils.add( tabBoutons[i] );
+			tabBoutons[i].addActionListener( gestionnaire );
 		}
 		barreOutils.addSeparator();
 		for ( int i = 3; i < 9; i++ ) {
@@ -120,6 +110,7 @@ public class Fenetre extends JFrame implements AffichageConstantes{
 			groupeContour.add( tabBoutons[i] );
 			tabBoutons[i].setToolTipText( tabToolTips[i] );
 			barreOutils.add( tabBoutons[i] );
+			tabBoutons[i].addActionListener( gestionnaire );
 		}
 		barreOutils.addSeparator();
 		for ( int i = 9; i < NB_BOUTONS; i++ ) {
@@ -127,6 +118,7 @@ public class Fenetre extends JFrame implements AffichageConstantes{
 			groupeSeaux.add( tabBoutons[i] );
 			tabBoutons[i].setToolTipText( tabToolTips[i] );
 			barreOutils.add( tabBoutons[i] );
+			tabBoutons[i].addActionListener( gestionnaire );
 		}
 
 		return barreOutils;

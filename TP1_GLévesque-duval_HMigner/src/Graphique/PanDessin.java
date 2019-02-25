@@ -1,4 +1,7 @@
+package Graphique;
+
 import java.awt.Color;
+import java.awt.Graphics;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
@@ -8,17 +11,18 @@ import javax.swing.JPanel;
 
 import Formes.Forme;
 import Formes.Ovale;
+import Formes.Rectangle;
 
 public class PanDessin extends JPanel
 		implements MouseListener, MouseMotionListener, AffichageConstantes {
 
 	private Color contour;
 	
-	private Color remplissage;
+	private Color remplissage = Color.WHITE;
 	
 	private int typeFigure;
 	
-	private Forme formeCourant;
+	private Forme formeCourante;
 	
 	MouseEvent premierClic;
 	
@@ -49,6 +53,13 @@ public class PanDessin extends JPanel
 		this.typeFigure = typeFigure;
 	}
 	
+	@Override
+	public void paintComponent(Graphics g) {
+		super.paintComponent( g );
+		for(Forme forme : liste) {
+			forme.tracer( g );
+		}
+	}
 
 	@Override
 	public void mouseDragged( MouseEvent e ) {
@@ -85,7 +96,18 @@ public class PanDessin extends JPanel
 
 	@Override
 	public void mouseReleased( MouseEvent e ) {
-
+		
+		if(typeFigure == OVALE) {
+			
+		}else if(typeFigure == RECTANGLE) {
+			Rectangle rec = new Rectangle( premierClic.getX(), premierClic.getY(), e.getX(), e.getY(), contour, remplissage );
+				rec.setParametres( rec.getX1(), rec.getY1(), rec.getX2(), rec.getY2() );
+						
+			liste.add( rec );
+			repaint();
+		}else if(typeFigure == TRAIT) {
+			
+		}
 	}
 
 
