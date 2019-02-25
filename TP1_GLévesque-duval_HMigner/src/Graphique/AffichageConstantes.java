@@ -14,6 +14,12 @@ public interface AffichageConstantes {
 			"Remplissage rose", "Remplissage vert", "Remplissage noir", "Remplissage jaune", "Remplissage bleu" };
 
 	final int NB_BOUTONS = 15;
+	
+	final int NB_FORMES = 3;
+	
+	final int NB_CONTOURS = 6;
+	
+	final int NB_REMPLISSAGE = 6;
 
 	final int OVALE = 0;
 

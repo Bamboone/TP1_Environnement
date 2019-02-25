@@ -97,7 +97,7 @@ public class Fenetre extends JFrame implements AffichageConstantes{
 			image = image.getScaledInstance( 20, 25, Image.SCALE_SMOOTH );
 			tabImages[i] = new ImageIcon( image );
 		}
-		for ( int i = 0; i < 3; i++ ) {
+		for ( int i = 0; i < NB_FORMES; i++ ) {
 			tabBoutons[i] = new JToggleButton( tabImages[i] );
 			groupeFormes.add( tabBoutons[i] );
 			tabBoutons[i].setToolTipText( tabToolTips[i] );
@@ -105,7 +105,7 @@ public class Fenetre extends JFrame implements AffichageConstantes{
 			tabBoutons[i].addActionListener( gestionnaire );
 		}
 		barreOutils.addSeparator();
-		for ( int i = 3; i < 9; i++ ) {
+		for ( int i = NB_FORMES; i < NB_FORMES+NB_CONTOURS; i++ ) {
 			tabBoutons[i] = new JToggleButton( tabImages[i] );
 			groupeContour.add( tabBoutons[i] );
 			tabBoutons[i].setToolTipText( tabToolTips[i] );
@@ -113,7 +113,7 @@ public class Fenetre extends JFrame implements AffichageConstantes{
 			tabBoutons[i].addActionListener( gestionnaire );
 		}
 		barreOutils.addSeparator();
-		for ( int i = 9; i < NB_BOUTONS; i++ ) {
+		for ( int i = NB_BOUTONS-NB_REMPLISSAGE; i < NB_BOUTONS; i++ ) {
 			tabBoutons[i] = new JToggleButton( tabImages[i] );
 			groupeSeaux.add( tabBoutons[i] );
 			tabBoutons[i].setToolTipText( tabToolTips[i] );
