@@ -16,6 +16,7 @@ public class Trait extends Forme{
 
 	@Override
 	public void tracer( Graphics g ) {
-		
+		g.setColor( getContour() );
+		g.drawLine( getX1(), getY1(), getX2(), getY2() );
 	}
 }

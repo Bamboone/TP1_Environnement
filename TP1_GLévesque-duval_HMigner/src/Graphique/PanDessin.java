@@ -9,9 +9,8 @@ import java.util.*;
 
 import javax.swing.JPanel;
 
-import Formes.Forme;
-import Formes.Ovale;
-import Formes.Rectangle;
+import Formes.*;
+
 
 public class PanDessin extends JPanel implements MouseListener, MouseMotionListener, AffichageConstantes {
 
@@ -69,14 +68,20 @@ public class PanDessin extends JPanel implements MouseListener, MouseMotionListe
 
 		if ( typeFigure == OVALE ) {
 
+			formeCourante = new Ovale( premierClic.getX(), premierClic.getY(), e.getX(), e.getY(), contour,
+					remplissage );
 		} else if ( typeFigure == RECTANGLE ) {
+			
 			formeCourante = new Rectangle( premierClic.getX(), premierClic.getY(), e.getX(), e.getY(), contour,
 					remplissage );
-			formeCourante.setParametres( premierClic.getX(), premierClic.getY(), e.getX(), e.getY() );
-			repaint();
+			
 		} else if ( typeFigure == TRAIT ) {
-
+			formeCourante = new Trait( premierClic.getX(), premierClic.getY(), e.getX(), e.getY(), contour,
+					remplissage );
 		}
+		
+		formeCourante.setParametres( premierClic.getX(), premierClic.getY(), e.getX(), e.getY() );
+		repaint();
 
 	}
 

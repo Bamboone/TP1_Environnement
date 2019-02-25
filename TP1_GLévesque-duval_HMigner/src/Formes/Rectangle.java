@@ -12,6 +12,14 @@ public class Rectangle extends Forme{
 		super(x1, y1, x2, y2, contour, remplissage);
 		
 	}
+	
+	public int getLargeur() {
+		return largeur;
+	}
+	
+	public int getHauteur() {
+		return hauteur;
+	}
 
 	@Override
 	public void setParametres( int x1, int y1, int x2, int y2 ) {
