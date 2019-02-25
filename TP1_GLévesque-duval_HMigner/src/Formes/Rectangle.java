@@ -7,9 +7,11 @@ public class Rectangle extends Forme{
 	
 	private int largeur;
 	private int hauteur;
+	private Color remplissage;
 
-	public Rectangle(int x1, int y1, int x2, int y2, Color contour, Color remplissage) {
-		super(x1, y1, x2, y2, contour, remplissage);
+	public Rectangle(Color contour, Color remplissage) {
+		super(contour);
+		this.remplissage = remplissage;
 		
 	}
 	
@@ -20,19 +22,35 @@ public class Rectangle extends Forme{
 	public int getHauteur() {
 		return hauteur;
 	}
+	
+	public Color getRemplissage() {
+		return remplissage;
+	}
+	
+	public void setRemplissage(Color remplissage) {
+		this.remplissage = remplissage;
+	}
 
 	@Override
 	public void setParametres( int x1, int y1, int x2, int y2 ) {
 		
 		if(x2>x1 && y2>y1) {
+			setX1( x1 );
+			setX2( x2 );
+			setY1( y1 );
+			setY2( y2 );
 			largeur = x2-x1;
 			hauteur = y2-y1;
 		}else if(x1>x2 && y2>y1) {
 			setX1( x2 );
 			setX2( x1 );
+			setY1( y1 );
+			setY2( y2 );
 			largeur = x1-x2;
 			hauteur = y2-y1;
 		}else if(x2>x1 && y1>y2 ) {
+			setX1( x1 );
+			setX2( x2 );
 			setY1( y2 );
 			setY2( y1 );
 			largeur = x2-x1;

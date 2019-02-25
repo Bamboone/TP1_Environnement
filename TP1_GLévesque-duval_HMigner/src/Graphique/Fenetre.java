@@ -1,16 +1,13 @@
 package Graphique;
 
 import java.awt.BorderLayout;
-import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Image;
 import java.awt.Toolkit;
 import java.awt.event.*;
-import java.beans.PropertyChangeListener;
-
 import javax.swing.*;
 
-public class Fenetre extends JFrame implements AffichageConstantes{
+public class Fenetre extends JFrame implements AffichageConstantes {
 
 	private static final long serialVersionUID = 1L;
 
@@ -38,9 +35,7 @@ public class Fenetre extends JFrame implements AffichageConstantes{
 		barreOutils = createToolbar();
 		barreOutils.setFloatable( false );
 		add( barreOutils, BorderLayout.NORTH );
-		
 
-		
 		add( panDessin );
 
 		setDefaultCloseOperation( JFrame.EXIT_ON_CLOSE );
@@ -89,8 +84,6 @@ public class Fenetre extends JFrame implements AffichageConstantes{
 		groupeSeaux = new ButtonGroup();
 		Image image;
 
-		
-
 		for ( int i = 0; i < NB_BOUTONS; i++ ) {
 			tabImages[i] = new ImageIcon( Fenetre.class.getResource( lienImages[i] ) );
 			image = tabImages[i].getImage();
@@ -105,7 +98,7 @@ public class Fenetre extends JFrame implements AffichageConstantes{
 			tabBoutons[i].addActionListener( gestionnaire );
 		}
 		barreOutils.addSeparator();
-		for ( int i = NB_FORMES; i < NB_FORMES+NB_CONTOURS; i++ ) {
+		for ( int i = NB_FORMES; i < NB_FORMES + NB_CONTOURS; i++ ) {
 			tabBoutons[i] = new JToggleButton( tabImages[i] );
 			groupeContour.add( tabBoutons[i] );
 			tabBoutons[i].setToolTipText( tabToolTips[i] );
@@ -113,7 +106,7 @@ public class Fenetre extends JFrame implements AffichageConstantes{
 			tabBoutons[i].addActionListener( gestionnaire );
 		}
 		barreOutils.addSeparator();
-		for ( int i = NB_BOUTONS-NB_REMPLISSAGE; i < NB_BOUTONS; i++ ) {
+		for ( int i = NB_BOUTONS - NB_REMPLISSAGE; i < NB_BOUTONS; i++ ) {
 			tabBoutons[i] = new JToggleButton( tabImages[i] );
 			groupeSeaux.add( tabBoutons[i] );
 			tabBoutons[i].setToolTipText( tabToolTips[i] );

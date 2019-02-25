@@ -5,13 +5,16 @@ import java.awt.Graphics;
 
 public class Trait extends Forme{
 
-	public Trait(int x1, int y1, int x2, int y2, Color contour, Color remplissage) {
-		super(x1, y1, x2, y2, contour, remplissage);
+	public Trait(Color contour) {
+		super(contour);
 	}
 
 	@Override
 	public void setParametres( int x1, int y1, int x2, int y2 ) {
-		
+		setX1( x1 );
+		setX2( x2 );
+		setY1( y1 );
+		setY2( y2 );
 	}
 
 	@Override

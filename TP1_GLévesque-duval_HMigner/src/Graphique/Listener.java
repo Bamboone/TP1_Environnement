@@ -1,11 +1,9 @@
 package Graphique;
 
 import java.awt.Color;
+
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
-import javax.swing.JButton;
-import javax.swing.JPanel;
 import javax.swing.JToggleButton;
 
 public class Listener implements ActionListener, AffichageConstantes {
@@ -20,6 +18,16 @@ public class Listener implements ActionListener, AffichageConstantes {
 		
 	}
 	
+	public void activerRemplissage(boolean activation) {
+			
+		for ( int i = NB_BOUTONS-NB_REMPLISSAGE; i < NB_BOUTONS; i++ ) {
+			
+			tabBoutons[i].setEnabled( activation );
+
+		}
+
+	}
+	
 	@Override
 	public void actionPerformed( ActionEvent e ) {
 
@@ -29,10 +37,13 @@ public class Listener implements ActionListener, AffichageConstantes {
 				
 				if(bouton.getToolTipText().equals( "Ovale" )){
 					pan.setTypeFigure( OVALE );
+					activerRemplissage( true );
 				}else if(bouton.getToolTipText().equals( "Rectangle" )) {
 					pan.setTypeFigure( RECTANGLE );
+					activerRemplissage( true );
 				}else if(bouton.getToolTipText().equals( "Trait" )) {
 					pan.setTypeFigure( TRAIT );
+					activerRemplissage( false );
 				}else if(bouton.getToolTipText().equals( "Contour bleu clair" )) {
 					pan.setContour( Color.cyan );
 				}else if(bouton.getToolTipText().equals( "Contour bleu marin" )) {

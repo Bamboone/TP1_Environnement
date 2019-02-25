@@ -14,7 +14,9 @@ import Formes.*;
 
 public class PanDessin extends JPanel implements MouseListener, MouseMotionListener, AffichageConstantes {
 
-	private Color contour;
+	private static final long serialVersionUID = 1L;
+
+	private Color contour = Color.WHITE;;
 
 	private Color remplissage = Color.WHITE;
 
@@ -68,16 +70,13 @@ public class PanDessin extends JPanel implements MouseListener, MouseMotionListe
 
 		if ( typeFigure == OVALE ) {
 
-			formeCourante = new Ovale( premierClic.getX(), premierClic.getY(), e.getX(), e.getY(), contour,
-					remplissage );
+			formeCourante = new Ovale( contour, remplissage );
 		} else if ( typeFigure == RECTANGLE ) {
 			
-			formeCourante = new Rectangle( premierClic.getX(), premierClic.getY(), e.getX(), e.getY(), contour,
-					remplissage );
+			formeCourante = new Rectangle( contour, remplissage );
 			
 		} else if ( typeFigure == TRAIT ) {
-			formeCourante = new Trait( premierClic.getX(), premierClic.getY(), e.getX(), e.getY(), contour,
-					remplissage );
+			formeCourante = new Trait( contour );
 		}
 		
 		formeCourante.setParametres( premierClic.getX(), premierClic.getY(), e.getX(), e.getY() );

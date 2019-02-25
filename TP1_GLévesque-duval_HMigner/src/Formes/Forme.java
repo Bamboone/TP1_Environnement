@@ -12,20 +12,15 @@ public abstract class Forme {
 	private int y2;
 	
 	private Color contour;
-	private Color remplissage;
+	
 	
 	public Forme() {
 		
 	}
 	
-	public Forme(int x1, int y1, int x2, int y2, Color contour, Color remplissage) {
-		this.x1 = x1;
-		this.y1 = y1;
-		this.x2 = x2;
-		this.y2 = y2;
+	public Forme( Color contour) {
 		
 		this.contour = contour;
-		this.remplissage = remplissage;
 		
 	}
 	
@@ -67,14 +62,6 @@ public abstract class Forme {
 	
 	public void setContour(Color contour) {
 		this.contour = contour;
-	}
-	
-	public Color getRemplissage() {
-		return remplissage;
-	}
-	
-	public void setRemplissage(Color remplissage) {
-		this.remplissage = remplissage;
 	}
 	
 	
