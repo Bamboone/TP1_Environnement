@@ -52,6 +52,14 @@ public class PanDessin extends JPanel implements MouseListener, MouseMotionListe
 	public void setTypeFigure( int typeFigure ) {
 		this.typeFigure = typeFigure;
 	}
+	
+	public void setListe(ArrayList<Forme> liste) {
+		this.liste = liste;
+	}
+	
+	public ArrayList<Forme> getListe(){
+		return liste;
+	}
 
 	@Override
 	public void paintComponent( Graphics g ) {
@@ -119,6 +127,7 @@ public class PanDessin extends JPanel implements MouseListener, MouseMotionListe
 
 		if(formeCourante !=null) {
 			liste.add( formeCourante );
+			formeCourante = null;
 			
 		}
 		repaint();

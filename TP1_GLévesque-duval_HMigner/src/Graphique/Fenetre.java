@@ -20,18 +20,19 @@ public class Fenetre extends JFrame implements AffichageConstantes {
 	private PanDessin panDessin;
 	private ImageIcon[] tabImages = new ImageIcon[NB_BOUTONS];
 	private JToggleButton[] tabBoutons = new JToggleButton[NB_BOUTONS];
-	private Listener gestionnaire;
+	private ListenerBoutons gestionnaireBoutons;
+	private ListenerMenus gestionaireMenus;
 
 	public Fenetre() {
 		super( "Sans titre - FakePaint" );
 		setSize( 800, 800 );
-		setIconImage( ( new ImageIcon( Fenetre.class.getResource( "../images/iconeApplication.png" ) ).getImage() ) );
+		setIconImage( ( new ImageIcon( Fenetre.class.getResource( iconeApp ) ).getImage() ) );
 		Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
 		setLocation( dim.width / 2 - this.getSize().width / 2, dim.height / 2 - this.getSize().height / 2 );
-		barreMenu = createMenuBar();
 		panDessin = new PanDessin();
+		barreMenu = createMenuBar();
 		setJMenuBar( barreMenu );
-		gestionnaire = new Listener( tabBoutons, panDessin );
+		gestionnaireBoutons = new ListenerBoutons( tabBoutons, panDessin );
 		barreOutils = createToolbar();
 		barreOutils.setFloatable( false );
 		add( barreOutils, BorderLayout.NORTH );
@@ -61,6 +62,17 @@ public class Fenetre extends JFrame implements AffichageConstantes {
 		optionOuvrir.setAccelerator( KeyStroke.getKeyStroke( KeyEvent.VK_O, InputEvent.CTRL_DOWN_MASK ) );
 		optionQuitter = new JMenuItem( "Quitter" );
 		optionQuitter.setAccelerator( KeyStroke.getKeyStroke( KeyEvent.VK_Q, InputEvent.CTRL_DOWN_MASK ) );
+		optionAPropos = new JMenuItem( "À propos" );
+		
+		gestionaireMenus = new ListenerMenus( optionNouveau, optionEnregistrer, optionEnregistrerSous, optionOuvrir,
+				optionQuitter, optionAPropos, panDessin );
+		
+		optionNouveau.addActionListener( gestionaireMenus );
+		optionEnregistrer.addActionListener( gestionaireMenus );
+		optionEnregistrerSous.addActionListener( gestionaireMenus );
+		optionEnregistrerSous.addActionListener( gestionaireMenus );
+		optionOuvrir.addActionListener( gestionaireMenus );
+		optionQuitter.addActionListener( gestionaireMenus );
 
 		menuFichier.add( optionNouveau );
 		menuFichier.add( optionEnregistrer );
@@ -69,7 +81,7 @@ public class Fenetre extends JFrame implements AffichageConstantes {
 		menuFichier.addSeparator();
 		menuFichier.add( optionQuitter );
 
-		optionAPropos = new JMenuItem( "À propos" );
+		optionAPropos.addActionListener( gestionaireMenus );
 
 		menuAPropos.add( optionAPropos );
 
@@ -95,7 +107,7 @@ public class Fenetre extends JFrame implements AffichageConstantes {
 			groupeFormes.add( tabBoutons[i] );
 			tabBoutons[i].setToolTipText( tabToolTips[i] );
 			barreOutils.add( tabBoutons[i] );
-			tabBoutons[i].addActionListener( gestionnaire );
+			tabBoutons[i].addActionListener( gestionnaireBoutons );
 		}
 		barreOutils.addSeparator();
 		for ( int i = NB_FORMES; i < NB_FORMES + NB_CONTOURS; i++ ) {
@@ -103,7 +115,7 @@ public class Fenetre extends JFrame implements AffichageConstantes {
 			groupeContour.add( tabBoutons[i] );
 			tabBoutons[i].setToolTipText( tabToolTips[i] );
 			barreOutils.add( tabBoutons[i] );
-			tabBoutons[i].addActionListener( gestionnaire );
+			tabBoutons[i].addActionListener( gestionnaireBoutons );
 		}
 		barreOutils.addSeparator();
 		for ( int i = NB_BOUTONS - NB_REMPLISSAGE; i < NB_BOUTONS; i++ ) {
@@ -111,14 +123,14 @@ public class Fenetre extends JFrame implements AffichageConstantes {
 			groupeSeaux.add( tabBoutons[i] );
 			tabBoutons[i].setToolTipText( tabToolTips[i] );
 			barreOutils.add( tabBoutons[i] );
-			tabBoutons[i].addActionListener( gestionnaire );
+			tabBoutons[i].addActionListener( gestionnaireBoutons );
 		}
 		tabBoutons[0].setSelected( true );
 		tabBoutons[0].doClick();
 		tabBoutons[NB_FORMES].setSelected( true );
 		tabBoutons[NB_FORMES].doClick();
-		tabBoutons[NB_BOUTONS-NB_REMPLISSAGE].setSelected( true );
-		tabBoutons[NB_BOUTONS-NB_REMPLISSAGE].doClick();
+		tabBoutons[NB_BOUTONS - NB_REMPLISSAGE].setSelected( true );
+		tabBoutons[NB_BOUTONS - NB_REMPLISSAGE].doClick();
 
 		return barreOutils;
 	}

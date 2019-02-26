@@ -1,7 +1,9 @@
 package Formes;
 
+import java.awt.BasicStroke;
 import java.awt.Color;
 import java.awt.Graphics;
+import java.awt.Graphics2D;
 
 public class Trait extends Forme{
 
@@ -19,7 +21,9 @@ public class Trait extends Forme{
 
 	@Override
 	public void tracer( Graphics g ) {
-		g.setColor( getContour() );
-		g.drawLine( getX1(), getY1(), getX2(), getY2() );
+		Graphics2D g2 = (Graphics2D)g;
+		g2.setStroke( new BasicStroke(5) );
+		g2.setColor( getContour() );
+		g2.drawLine( getX1(), getY1(), getX2(), getY2() );
 	}
 }

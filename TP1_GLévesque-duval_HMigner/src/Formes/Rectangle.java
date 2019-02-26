@@ -1,7 +1,9 @@
 package Formes;
 
+import java.awt.BasicStroke;
 import java.awt.Color;
 import java.awt.Graphics;
+import java.awt.Graphics2D;
 
 public class Rectangle extends Forme{
 	
@@ -70,10 +72,12 @@ public class Rectangle extends Forme{
 
 	@Override
 	public void tracer( Graphics g ) {
-		g.setColor( getContour() );
-		g.drawRect( getX1()-1, getY1()-1, largeur+1, hauteur+1);
-		g.setColor( getRemplissage() );
-		g.fillRect( getX1(), getY1(), largeur, hauteur );
+		Graphics2D g2 = (Graphics2D)g;
+		g2.setStroke( new BasicStroke(5) );
+		g2.setColor( getContour() );
+		g2.drawRect( getX1()-1, getY1()-1, largeur+1, hauteur+1);
+		g2.setColor( getRemplissage() );
+		g2.fillRect( getX1(), getY1(), largeur, hauteur );
 	}
 	
 }

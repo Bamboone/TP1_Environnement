@@ -6,12 +6,12 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JToggleButton;
 
-public class Listener implements ActionListener, AffichageConstantes {
+public class ListenerBoutons implements ActionListener, AffichageConstantes {
 
 	JToggleButton[] tabBoutons;
 	PanDessin pan;
 	
-	public Listener(JToggleButton[] tabBoutons, PanDessin pan) {
+	public ListenerBoutons(JToggleButton[] tabBoutons, PanDessin pan) {
 		
 		this.tabBoutons = tabBoutons;
 		this.pan = pan;
