@@ -12,15 +12,17 @@ public abstract class Forme {
 	private int y2;
 	
 	private Color contour;
+	private int epaisseur;
 	
 	
 	public Forme() {
 		
 	}
 	
-	public Forme( Color contour) {
+	public Forme( Color contour, int epaisseur) {
 		
 		this.contour = contour;
+		this.epaisseur = epaisseur;
 		
 	}
 	
@@ -62,6 +64,10 @@ public abstract class Forme {
 	
 	public void setContour(Color contour) {
 		this.contour = contour;
+	}
+	
+	public int getEpaisseur() {
+		return epaisseur;
 	}
 	
 	

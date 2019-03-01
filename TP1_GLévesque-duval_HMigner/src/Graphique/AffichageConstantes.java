@@ -21,6 +21,8 @@ public interface AffichageConstantes {
 			"Contour bleu marin", "Contour jaune", "Contour mauve", "Contour noir", "Contour orange",
 			"Remplissage rouge", "Remplissage rose", "Remplissage vert", "Remplissage noir", "Remplissage jaune",
 			"Remplissage bleu" };
+	//ComboBox
+	final Integer[] tabComboBox = {1, 5, 10, 15, 20};
 
 	final int NB_BOUTONS = 16;
 

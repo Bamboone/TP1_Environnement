@@ -11,9 +11,10 @@ public class Rectangle extends Forme{
 	private int hauteur;
 	private Color remplissage;
 
-	public Rectangle(Color contour, Color remplissage) {
-		super(contour);
+	public Rectangle(Color contour, Color remplissage, int epaisseur) {
+		super(contour, epaisseur);
 		this.remplissage = remplissage;
+		
 		
 	}
 	
@@ -73,7 +74,7 @@ public class Rectangle extends Forme{
 	@Override
 	public void tracer( Graphics g ) {
 		Graphics2D g2 = (Graphics2D)g;
-		g2.setStroke( new BasicStroke(5) );
+		g2.setStroke( new BasicStroke(getEpaisseur()) );
 		g2.setColor( getRemplissage() );
 		g2.fillRect( getX1(), getY1(), largeur, hauteur );
 		g2.setColor( getContour() );

@@ -11,8 +11,8 @@ public class Triangle extends Forme{
 	private int[] pointsY;
 	private Color remplissage;
 
-	public Triangle(Color contour, Color remplissage) {
-		super(contour);
+	public Triangle(Color contour, Color remplissage, int epaisseur) {
+		super(contour, epaisseur);
 		this.remplissage = remplissage;
 		
 	}
@@ -66,7 +66,7 @@ public class Triangle extends Forme{
 	@Override
 	public void tracer( Graphics g ) {
 		Graphics2D g2 = (Graphics2D)g;
-		g2.setStroke( new BasicStroke(5) );
+		g2.setStroke( new BasicStroke(getEpaisseur()) );
 		g2.setColor( getRemplissage() );
 		g2.fillPolygon( pointsX, pointsY, 3 );
 		g2.setColor( getContour() );
