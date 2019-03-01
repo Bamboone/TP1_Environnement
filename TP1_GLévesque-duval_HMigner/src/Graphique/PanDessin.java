@@ -88,6 +88,8 @@ public class PanDessin extends JPanel implements MouseListener, MouseMotionListe
 			
 		} else if ( typeFigure == TRAIT ) {
 			formeCourante = new Trait( contour );
+		}else if(typeFigure == TRIANGLE) {
+			formeCourante = new Triangle( contour, remplissage );
 		}
 		
 		formeCourante.setParametres( premierClic.getX(), premierClic.getY(), e.getX(), e.getY() );

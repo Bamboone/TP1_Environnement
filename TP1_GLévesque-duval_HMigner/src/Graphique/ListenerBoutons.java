@@ -44,6 +44,9 @@ public class ListenerBoutons implements ActionListener, AffichageConstantes {
 				}else if(bouton.getToolTipText().equals( "Trait" )) {
 					pan.setTypeFigure( TRAIT );
 					activerRemplissage( false );
+				}else if(bouton.getToolTipText().equals( "Triangle" )) {
+					pan.setTypeFigure( TRIANGLE );
+					activerRemplissage( true );
 				}else if(bouton.getToolTipText().equals( "Contour bleu clair" )) {
 					pan.setContour( Color.cyan );
 				}else if(bouton.getToolTipText().equals( "Contour bleu marin" )) {
