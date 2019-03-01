@@ -7,8 +7,8 @@ import java.awt.Graphics2D;
 
 public class Trait extends Forme{
 
-	public Trait(Color contour) {
-		super(contour);
+	public Trait(Color contour, int epaisseur) {
+		super(contour, epaisseur);
 	}
 
 	@Override
@@ -22,7 +22,7 @@ public class Trait extends Forme{
 	@Override
 	public void tracer( Graphics g ) {
 		Graphics2D g2 = (Graphics2D)g;
-		g2.setStroke( new BasicStroke(5) );
+		g2.setStroke( new BasicStroke(getEpaisseur()) );
 		g2.setColor( getContour() );
 		g2.drawLine( getX1(), getY1(), getX2(), getY2() );
 	}

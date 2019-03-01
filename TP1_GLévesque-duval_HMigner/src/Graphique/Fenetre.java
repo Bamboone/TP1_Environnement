@@ -22,6 +22,7 @@ public class Fenetre extends JFrame implements AffichageConstantes {
 	private JToggleButton[] tabBoutons = new JToggleButton[NB_BOUTONS];
 	private ListenerBoutons gestionnaireBoutons;
 	private ListenerMenus gestionaireMenus;
+	private JComboBox<Integer> comboBoxEpaisseur;
 
 	public Fenetre() {
 		super( "Sans titre - FakePaint" );
@@ -36,6 +37,8 @@ public class Fenetre extends JFrame implements AffichageConstantes {
 		barreOutils = createToolbar();
 		barreOutils.setFloatable( false );
 		add( barreOutils, BorderLayout.NORTH );
+		
+		
 
 		add( panDessin );
 
@@ -125,6 +128,11 @@ public class Fenetre extends JFrame implements AffichageConstantes {
 			barreOutils.add( tabBoutons[i] );
 			tabBoutons[i].addActionListener( gestionnaireBoutons );
 		}
+		barreOutils.addSeparator();
+		comboBoxEpaisseur = new JComboBox<>( tabComboBox );
+		ListenerComboBox gestionnaireComboBox = new ListenerComboBox( comboBoxEpaisseur, panDessin );
+		comboBoxEpaisseur.addActionListener( gestionnaireComboBox );
+		barreOutils.add( comboBoxEpaisseur );
 		tabBoutons[0].setSelected( true );
 		tabBoutons[0].doClick();
 		tabBoutons[NB_FORMES].setSelected( true );
@@ -134,4 +142,6 @@ public class Fenetre extends JFrame implements AffichageConstantes {
 
 		return barreOutils;
 	}
+	
+	
 }

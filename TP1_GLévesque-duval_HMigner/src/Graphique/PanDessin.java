@@ -23,6 +23,8 @@ public class PanDessin extends JPanel implements MouseListener, MouseMotionListe
 	private int typeFigure;
 
 	private Forme formeCourante;
+	
+	private int epaisseur;
 
 	MouseEvent premierClic;
 
@@ -53,6 +55,10 @@ public class PanDessin extends JPanel implements MouseListener, MouseMotionListe
 		this.typeFigure = typeFigure;
 	}
 	
+	public void setEpaisseur( int epaisseur ) {
+		this.epaisseur = epaisseur;
+	}
+	
 	public void setListe(ArrayList<Forme> liste) {
 		this.liste = liste;
 	}
@@ -81,15 +87,15 @@ public class PanDessin extends JPanel implements MouseListener, MouseMotionListe
 
 		if ( typeFigure == OVALE ) {
 
-			formeCourante = new Ovale( contour, remplissage );
+			formeCourante = new Ovale( contour, remplissage, epaisseur );
 		} else if ( typeFigure == RECTANGLE ) {
 			
-			formeCourante = new Rectangle( contour, remplissage );
+			formeCourante = new Rectangle( contour, remplissage, epaisseur );
 			
 		} else if ( typeFigure == TRAIT ) {
-			formeCourante = new Trait( contour );
+			formeCourante = new Trait( contour, epaisseur );
 		}else if(typeFigure == TRIANGLE) {
-			formeCourante = new Triangle( contour, remplissage );
+			formeCourante = new Triangle( contour, remplissage, epaisseur );
 		}
 		
 		formeCourante.setParametres( premierClic.getX(), premierClic.getY(), e.getX(), e.getY() );
