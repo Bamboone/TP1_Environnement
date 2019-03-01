@@ -17,10 +17,10 @@ public class Ovale extends Rectangle{
 
 		Graphics2D g2 = (Graphics2D)g;
 		g2.setStroke( new BasicStroke(5) );
-		g2.setColor( getContour() );
-		g2.drawOval( getX1(), getY1(), getLargeur(), getHauteur());
 		g2.setColor( getRemplissage() );
 		g2.fillOval( getX1(), getY1(), getLargeur(), getHauteur() );
+		g2.setColor( getContour() );
+		g2.drawOval( getX1(), getY1(), getLargeur(), getHauteur());
 		
 	}
 

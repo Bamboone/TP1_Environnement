@@ -74,10 +74,10 @@ public class Rectangle extends Forme{
 	public void tracer( Graphics g ) {
 		Graphics2D g2 = (Graphics2D)g;
 		g2.setStroke( new BasicStroke(5) );
-		g2.setColor( getContour() );
-		g2.drawRect( getX1()-1, getY1()-1, largeur+1, hauteur+1);
 		g2.setColor( getRemplissage() );
 		g2.fillRect( getX1(), getY1(), largeur, hauteur );
+		g2.setColor( getContour() );
+		g2.drawRect( getX1(), getY1(), largeur, hauteur);
 	}
 	
 }
