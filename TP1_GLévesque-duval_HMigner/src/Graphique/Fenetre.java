@@ -25,6 +25,7 @@ public class Fenetre extends JFrame implements AffichageConstantes {
 
 	public Fenetre() {
 		super( "Sans titre - FakePaint" );
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setSize( 800, 800 );
 		setIconImage( ( new ImageIcon( Fenetre.class.getResource( iconeApp ) ).getImage() ) );
 		Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
@@ -38,8 +39,6 @@ public class Fenetre extends JFrame implements AffichageConstantes {
 		add( barreOutils, BorderLayout.NORTH );
 
 		add( panDessin );
-
-		setDefaultCloseOperation( JFrame.EXIT_ON_CLOSE );
 
 	}
 

@@ -67,9 +67,9 @@ public class Triangle extends Forme{
 	public void tracer( Graphics g ) {
 		Graphics2D g2 = (Graphics2D)g;
 		g2.setStroke( new BasicStroke(5) );
-		g2.setColor( getContour() );
-		g2.drawPolygon(pointsX, pointsY, 3);
 		g2.setColor( getRemplissage() );
 		g2.fillPolygon( pointsX, pointsY, 3 );
+		g2.setColor( getContour() );
+		g2.drawPolygon(pointsX, pointsY, 3);
 	}
 }

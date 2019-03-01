@@ -1,11 +1,11 @@
 package Graphique;
 
-
 public class Application {
 
 	public static void main( String[] args ) {
 		Fenetre fenetre = new Fenetre();
-		fenetre.setVisible(true);
+        
+        fenetre.setVisible(true);
 
 	}
 

@@ -45,7 +45,11 @@ public class ListenerMenus implements ActionListener, AffichageConstantes {
 		} else if ( e.getSource() == optionOuvrir ) {
 
 		} else if ( e.getSource() == optionQuitter ) {
-			System.exit( 0 );
+			 int response = JOptionPane.showConfirmDialog(null, " Voulez-vous vraiment quitter?", 
+             		"Confirmation", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+             if (response == JOptionPane.YES_OPTION) {
+                 System.exit(0);
+             }
 
 		} else if ( e.getSource() == optionAPropos ) {
 			JOptionPane.showMessageDialog( null, A_PROPOS, "À Propos", JOptionPane.INFORMATION_MESSAGE,
