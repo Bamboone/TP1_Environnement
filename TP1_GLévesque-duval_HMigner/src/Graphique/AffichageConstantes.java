@@ -20,7 +20,7 @@ public interface AffichageConstantes {
 	final String[] tabToolTips = { "Ovale", "Rectangle", "Trait", "Triangle", "Contour bleu clair",
 			"Contour bleu marin", "Contour jaune", "Contour mauve", "Contour noir", "Contour orange",
 			"Remplissage rouge", "Remplissage rose", "Remplissage vert", "Remplissage noir", "Remplissage jaune",
-			"Remplissage bleu" };
+			"Remplissage bleu", "Épaisseur du contour" };
 	//ComboBox
 	final Integer[] tabComboBox = {1, 5, 10, 15, 20};
 

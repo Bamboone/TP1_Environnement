@@ -131,6 +131,7 @@ public class Fenetre extends JFrame implements AffichageConstantes {
 		comboBoxEpaisseur = new JComboBox<>( tabComboBox );
 		ListenerComboBox gestionnaireComboBox = new ListenerComboBox( comboBoxEpaisseur, panDessin );
 		comboBoxEpaisseur.addActionListener( gestionnaireComboBox );
+		comboBoxEpaisseur.setToolTipText( tabToolTips[NB_BOUTONS] );
 		barreOutils.add( comboBoxEpaisseur );
 		tabBoutons[0].setSelected( true );
 		tabBoutons[0].doClick();
