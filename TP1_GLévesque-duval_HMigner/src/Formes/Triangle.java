@@ -1,14 +1,16 @@
 package Formes;
 
 import java.awt.BasicStroke;
+
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
-import java.io.Serializable;
+
 
 public class Triangle extends Forme {
 	
 
+	private static final long serialVersionUID = 1L;
 	private int[] pointsX;
 	private int[] pointsY;
 	private Color remplissage;

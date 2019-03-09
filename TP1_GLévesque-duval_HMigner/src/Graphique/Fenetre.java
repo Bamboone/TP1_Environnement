@@ -44,6 +44,10 @@ public class Fenetre extends JFrame implements AffichageConstantes {
 		add( panDessin );
 
 	}
+	
+	public ListenerMenus getListenerMenus() {
+		return gestionaireMenus;
+	}
 
 	private JMenuBar createMenuBar() {
 
@@ -71,7 +75,6 @@ public class Fenetre extends JFrame implements AffichageConstantes {
 		
 		optionNouveau.addActionListener( gestionaireMenus );
 		optionEnregistrer.addActionListener( gestionaireMenus );
-		optionEnregistrerSous.addActionListener( gestionaireMenus );
 		optionEnregistrerSous.addActionListener( gestionaireMenus );
 		optionOuvrir.addActionListener( gestionaireMenus );
 		optionQuitter.addActionListener( gestionaireMenus );

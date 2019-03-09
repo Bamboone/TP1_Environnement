@@ -31,7 +31,7 @@ public class PanDessin extends JPanel implements MouseListener, MouseMotionListe
 
 	private ArrayList<Forme> liste = new ArrayList<>();
 	
-	private boolean sauvegarde = false;
+	private boolean sauvegarde = true;
 
 	
 	public PanDessin() {
@@ -148,7 +148,7 @@ public class PanDessin extends JPanel implements MouseListener, MouseMotionListe
 		if(formeCourante !=null) {
 			liste.add( formeCourante );
 			formeCourante = null;
-			
+			sauvegarde=false;
 		}
 		repaint();
 

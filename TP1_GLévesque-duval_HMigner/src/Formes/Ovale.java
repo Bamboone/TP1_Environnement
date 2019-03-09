@@ -7,6 +7,9 @@ import java.awt.Graphics2D;
 
 public class Ovale extends Rectangle{
 
+
+	private static final long serialVersionUID = 1L;
+
 	public Ovale(Color contour, Color remplissage, int epaisseur) {
 		super(contour, remplissage, epaisseur);
 

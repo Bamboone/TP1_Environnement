@@ -1,13 +1,14 @@
 package Formes;
 
 import java.awt.BasicStroke;
+
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
-import java.io.Serializable;
 
 public class Rectangle extends Forme {
 
+	private static final long serialVersionUID = 1L;
 	private int largeur;
 	private int hauteur;
 	
