@@ -7,8 +7,8 @@ import java.awt.Graphics2D;
 
 public class Ovale extends Rectangle{
 
-	public Ovale( Color contour, Color remplissage, int epaisseur ) {
-		super( contour, remplissage, epaisseur );
+	public Ovale(Color contour, Color remplissage, int epaisseur) {
+		super(contour, remplissage, epaisseur);
 
 	}
 

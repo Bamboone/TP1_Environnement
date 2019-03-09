@@ -4,8 +4,10 @@ import java.awt.BasicStroke;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+import java.io.Serializable;
 
-public class Trait extends Forme{
+public class Trait extends Forme {
+
 
 	public Trait(Color contour, int epaisseur) {
 		super(contour, epaisseur);

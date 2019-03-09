@@ -26,7 +26,7 @@ public class Fenetre extends JFrame implements AffichageConstantes {
 
 	public Fenetre() {
 		super( "Sans titre - FakePaint" );
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
 		setSize( 800, 800 );
 		setIconImage( ( new ImageIcon( Fenetre.class.getResource( iconeApp ) ).getImage() ) );
 		Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
@@ -67,7 +67,7 @@ public class Fenetre extends JFrame implements AffichageConstantes {
 		optionAPropos = new JMenuItem( "À propos" );
 		
 		gestionaireMenus = new ListenerMenus( optionNouveau, optionEnregistrer, optionEnregistrerSous, optionOuvrir,
-				optionQuitter, optionAPropos, panDessin );
+				optionQuitter, optionAPropos, panDessin, this );
 		
 		optionNouveau.addActionListener( gestionaireMenus );
 		optionEnregistrer.addActionListener( gestionaireMenus );

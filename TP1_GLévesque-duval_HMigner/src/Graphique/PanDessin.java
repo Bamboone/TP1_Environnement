@@ -5,6 +5,7 @@ import java.awt.Graphics;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
+import java.io.Serializable;
 import java.util.*;
 
 import javax.swing.JPanel;
@@ -12,7 +13,7 @@ import javax.swing.JPanel;
 import Formes.*;
 
 
-public class PanDessin extends JPanel implements MouseListener, MouseMotionListener, AffichageConstantes {
+public class PanDessin extends JPanel implements MouseListener, MouseMotionListener, AffichageConstantes, Serializable {
 
 	private static final long serialVersionUID = 1L;
 
@@ -29,7 +30,10 @@ public class PanDessin extends JPanel implements MouseListener, MouseMotionListe
 	MouseEvent premierClic;
 
 	private ArrayList<Forme> liste = new ArrayList<>();
+	
+	private boolean sauvegarde = false;
 
+	
 	public PanDessin() {
 		addMouseListener( this );
 		addMouseMotionListener( this );
@@ -65,6 +69,14 @@ public class PanDessin extends JPanel implements MouseListener, MouseMotionListe
 	
 	public ArrayList<Forme> getListe(){
 		return liste;
+	}
+	
+	public void setSauvegarde(boolean sauvegarde) {
+		this.sauvegarde = sauvegarde;
+	}
+	
+	public boolean isSauvegarde() {
+		return sauvegarde;
 	}
 
 	@Override

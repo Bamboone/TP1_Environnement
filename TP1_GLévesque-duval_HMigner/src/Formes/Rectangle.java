@@ -4,15 +4,19 @@ import java.awt.BasicStroke;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+import java.io.Serializable;
 
-public class Rectangle extends Forme{
-	
+public class Rectangle extends Forme {
+
 	private int largeur;
 	private int hauteur;
+	
 	private Color remplissage;
 
 	public Rectangle(Color contour, Color remplissage, int epaisseur) {
 		super(contour, epaisseur);
+		
+		
 		this.remplissage = remplissage;
 		
 		

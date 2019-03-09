@@ -2,9 +2,12 @@ package Formes;
 
 import java.awt.Color;
 import java.awt.Graphics;
+import java.io.Serializable;
 
-public abstract class Forme {
+public abstract class Forme implements Serializable{
 
+
+	private static final long serialVersionUID = 1L;
 	private int x1;
 	private int y1;
 	
@@ -21,6 +24,7 @@ public abstract class Forme {
 	
 	public Forme( Color contour, int epaisseur) {
 		
+
 		this.contour = contour;
 		this.epaisseur = epaisseur;
 		

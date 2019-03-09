@@ -4,9 +4,11 @@ import java.awt.BasicStroke;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+import java.io.Serializable;
 
-public class Triangle extends Forme{
+public class Triangle extends Forme {
 	
+
 	private int[] pointsX;
 	private int[] pointsY;
 	private Color remplissage;
