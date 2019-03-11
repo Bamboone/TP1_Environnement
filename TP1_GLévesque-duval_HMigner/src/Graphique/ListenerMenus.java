@@ -156,9 +156,22 @@ public class ListenerMenus implements ActionListener, AffichageConstantes {
 	public void actionPerformed(ActionEvent e) {
 
 		if (e.getSource() == optionNouveau) {
+			if (!panDessin.isSauvegarde()) {
+				int response = JOptionPane.showConfirmDialog(null,
+						"Voulez-vous sauvegarder le dessin avant d'en créer un nouveau?", "Confirmation",
+						JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+				if (response == JOptionPane.YES_OPTION) {
+					try {
+						enregistrer();
+					} catch (Exception ex) {
+
+					}
+				}
+			}
 			panDessin.setListe(new ArrayList<Forme>());
 			panDessin.repaint();
 			nouveau = true;
+			panDessin.setSauvegarde( true );
 			fenetre.setTitle("Sans titre - FakePaint");
 
 		} else if (e.getSource() == optionEnregistrer) {
