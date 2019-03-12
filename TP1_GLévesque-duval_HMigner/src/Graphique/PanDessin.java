@@ -39,16 +39,8 @@ public class PanDessin extends JPanel implements MouseListener, MouseMotionListe
 		addMouseMotionListener( this );
 	}
 
-	public Color getContour() {
-		return contour;
-	}
-
 	public void setContour( Color contour ) {
 		this.contour = contour;
-	}
-
-	public Color getRemplissage() {
-		return remplissage;
 	}
 
 	public void setRemplissage( Color remplissage ) {
@@ -87,8 +79,6 @@ public class PanDessin extends JPanel implements MouseListener, MouseMotionListe
 		
 		}	
 
-		
-		
 		if(formeCourante != null) {
 			formeCourante.tracer(g);
 		}
