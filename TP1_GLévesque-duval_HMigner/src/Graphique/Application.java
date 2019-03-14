@@ -5,7 +5,7 @@ import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
 
 /**
- * Cette s'occupe d'appeler le main de l'application.
+ * Cette classe s'occupe d'appeler le main de l'application.
  * 
  * @author Gabriel Lévesque-Duval
  * @author Hugo Migner
