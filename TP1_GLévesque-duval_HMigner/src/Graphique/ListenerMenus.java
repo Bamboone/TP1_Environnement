@@ -22,21 +22,58 @@ import javax.swing.filechooser.FileNameExtensionFilter;
 
 import Formes.Forme;
 
+/**
+ * Cette classe est un listener pour la barre de menu.
+ * @author Hugo Migner
+ * @author Gabriel Lévesque-Duval
+ * @version 1.0
+ *
+ */
 public class ListenerMenus implements ActionListener, AffichageConstantes {
 
+	/**
+	 * Tous les boutons sur la barre de menus
+	 */
 	private JMenuItem optionNouveau, optionEnregistrer, optionEnregistrerSous, optionOuvrir, optionQuitter,
 			optionAPropos;
 
+	/**
+	 * La fenêtre, un JFrame
+	 */
 	private JFrame fenetre;
 
+	/**
+	 * Le panneau de dessin, qui vient de la classe PanDessin
+	 */
 	private PanDessin panDessin;
 
+	/**
+	 * Un filtre personnel pour changer l'extension et le type des fichiers créés par l'application.
+	 */
 	private FileFilter filtre = new FileNameExtensionFilter( "Dessin FakePaint (*.dfp)", "dfp" );
 
+	/**
+	 * Un boolean pour savoir si le document a été sauvegardé ou non.
+	 */
 	private boolean nouveau = true;
 
+	/**
+	 * Le fichier a enregistrer.
+	 */
 	private File fichier;
 
+	/**
+	 * Constructeur du listenerMenus.
+	 * 
+	 * @param optionNouveau Le bouton pour l'option Nouveau.
+	 * @param optionEnregistrer Le bouton pour l'option Enregistrer.
+	 * @param optionEnregistrerSous Le bouton pour l'option Enregistrer Sous.
+	 * @param optionOuvrir Le bouton pour l'option Ouvrir.
+	 * @param optionQuitter Le bouton pour l'option Quitter.
+	 * @param optionAPropos Le bouton pour l'option À Propos.
+	 * @param panDessin Le panneau de dessin.
+	 * @param fenetre La fenêtre de l'application.
+	 */
 	public ListenerMenus( JMenuItem optionNouveau, JMenuItem optionEnregistrer, JMenuItem optionEnregistrerSous,
 			JMenuItem optionOuvrir, JMenuItem optionQuitter, JMenuItem optionAPropos, PanDessin panDessin,
 			JFrame fenetre ) {
@@ -52,6 +89,10 @@ public class ListenerMenus implements ActionListener, AffichageConstantes {
 
 	}
 
+	/**
+	 * Méthode permettant d'ouvrir un fichier déjà enregistré.
+	 * @throws FileNotFoundException Erreur si le fichier n'est pas trouvé.
+	 */
 	@SuppressWarnings("unchecked")
 	private void ouvrir() throws FileNotFoundException {
 
@@ -93,6 +134,10 @@ public class ListenerMenus implements ActionListener, AffichageConstantes {
 		}
 	}
 
+	/**
+	 * Méthode permettant d'enregistrer le travail courrant dans un fichier déjà créé, sinon dans un nouveau.
+	 * @throws FileNotFoundException Erreur si le fichier n'est pas trouvé.
+	 */
 	private void enregistrer() throws FileNotFoundException {
 
 		if ( nouveau ) {
@@ -111,6 +156,10 @@ public class ListenerMenus implements ActionListener, AffichageConstantes {
 
 	}
 
+	/**
+	 * Méthode permettant d'enregistrer le travail courrant dans un nouveau fichier.
+	 * @throws FileNotFoundException Erreur si le fichier n'est pas trouvé.
+	 */
 	private void enregistrerSous() throws FileNotFoundException {
 
 		JFileChooser choixFichier = new JFileChooser();
@@ -132,6 +181,9 @@ public class ListenerMenus implements ActionListener, AffichageConstantes {
 		}
 	}
 
+	/**
+	 * Méthode permettant de vérifier si le travail a été enregistré avant de quitter l'application.
+	 */
 	public void quitter() {
 		int response = JOptionPane.showConfirmDialog( null, "Voulez-vous vraiment quitter?", "Confirmation",
 				JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE );
@@ -152,6 +204,9 @@ public class ListenerMenus implements ActionListener, AffichageConstantes {
 		}
 	}
 
+	/**
+	 * Redéfinission de la méthode actionPerformed pour déterminer sur quel bouton l'utilisateur a cliqué et faire l'action respective.
+	 */
 	@Override
 	public void actionPerformed( ActionEvent e ) {
 

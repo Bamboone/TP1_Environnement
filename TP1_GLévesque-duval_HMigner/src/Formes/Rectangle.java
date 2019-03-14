@@ -15,7 +15,7 @@ import java.awt.Graphics2D;
 public class Rectangle extends Forme {
 	
 	/**
-	 * Numéro de sérialization 
+	 * Numéro de sérialization
 	 */
 	private static final long serialVersionUID = 1L;
 	

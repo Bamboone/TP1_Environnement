@@ -6,11 +6,31 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JToggleButton;
 
+/**
+ * Cette classe est un listener pour nos boutons, qui implémente les interfaces ActionListener et AffichageConstantes.
+ * 
+ * @author Hugo Migner
+ * @author Gabriel Lévesque-Duval
+ * @version 1.0
+ *
+ */
 public class ListenerBoutons implements ActionListener, AffichageConstantes {
 
+	/**
+	 * Le tableau pour les boutons de la barre d'outils
+	 */
 	JToggleButton[] tabBoutons;
+	
+	/**
+	 * Le panneau de dessin, qui vient de la classe PanDessin
+	 */
 	PanDessin pan;
 
+	/**
+	 * Constructeur du listener
+	 * @param tabBoutons Tableau de boutons de la barre d'outils
+	 * @param pan Panneau de dessin
+	 */
 	public ListenerBoutons( JToggleButton[] tabBoutons, PanDessin pan ) {
 
 		this.tabBoutons = tabBoutons;
@@ -18,6 +38,10 @@ public class ListenerBoutons implements ActionListener, AffichageConstantes {
 
 	}
 
+	/**
+	 * Méthode permettant d'activer le remplissage dépendemment de la forme
+	 * @param activation Boolean qui définit si le remplissage devrait être activé
+	 */
 	public void activerRemplissage( boolean activation ) {
 
 		for ( int i = NB_BOUTONS - NB_REMPLISSAGE; i < NB_BOUTONS; i++ ) {
@@ -28,6 +52,9 @@ public class ListenerBoutons implements ActionListener, AffichageConstantes {
 
 	}
 
+	/**
+	 * Redéfinission de la méthode actionPerformed pour définir quel bouton est activé et quoi faire selon.
+	 */
 	@Override
 	public void actionPerformed( ActionEvent e ) {
 

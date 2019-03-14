@@ -7,23 +7,73 @@ import java.awt.Toolkit;
 import java.awt.event.*;
 import javax.swing.*;
 
+/**
+ * Cette classe hérite de la classe JFrame et implémente l'interface AffichageConstantes. Elle permet de créer la fenêtre,
+ * la barre de menu et la barre d'outils.
+ * 
+ * @author Hugo Migner
+ * @author Gabriel Lévesque-Duval
+ * @version 1.0
+ *
+ */
+
 public class Fenetre extends JFrame implements AffichageConstantes {
 
+	/**
+	 * Numéro de sérialization
+	 */
 	private static final long serialVersionUID = 1L;
 
+	/**
+	 * La barre de menu
+	 */
 	private JMenuBar barreMenu;
+	/**
+	 * Les deux menu, le menu pour gérer les actions sur un fichier et le menu "À propos"
+	 */
 	private JMenu menuFichier, menuAPropos;
+	/**
+	 * Toutes les boutons pour options du menu.
+	 */
 	private JMenuItem optionNouveau, optionEnregistrer, optionEnregistrerSous, optionOuvrir, optionQuitter,
 			optionAPropos;
+	/**
+	 * La barre d'outils
+	 */
 	private JToolBar barreOutils;
+	/**
+	 * Des groupes de boutons pour regrouper les différents groupes de boutons
+	 */
 	private ButtonGroup groupeFormes, groupeContour, groupeSeaux;
+	/**
+	 * Le panneau de dessin, l'objet créé vient de la classe précédemment créée, PanDessin
+	 */
 	private PanDessin panDessin;
+	/**
+	 * Un tableau d'images, pour les boutons de la barre d'outils
+	 */
 	private ImageIcon[] tabImages = new ImageIcon[NB_BOUTONS];
+	/**
+	 * Un tableau de boutons, pour la barre d'outils
+	 */
 	private JToggleButton[] tabBoutons = new JToggleButton[NB_BOUTONS];
+	/**
+	 * Le listener pour les boutons de la barre d'outils
+	 */
 	private ListenerBoutons gestionnaireBoutons;
+	/**
+	 * Le listener pour les boutons du menu.
+	 */
 	private ListenerMenus gestionaireMenus;
+	/**
+	 * Une combo box pour la boîte d'options pour l'épaisseur du crayon.
+	 */
 	private JComboBox<Integer> comboBoxEpaisseur;
 
+	/**
+	 * Constructeur de la classe Fenetre
+	 * Aucun paramètre
+	 */
 	public Fenetre() {
 		super( "Sans titre - FakePaint" );
 		setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
@@ -45,10 +95,18 @@ public class Fenetre extends JFrame implements AffichageConstantes {
 
 	}
 	
+	/**
+	 * Accesseur pour le listener des boutons du menu.
+	 * @return gestionnaireMenus (Le listener)
+	 */
 	public ListenerMenus getListenerMenus() {
 		return gestionaireMenus;
 	}
 
+	/**
+	 * Méthode qui créé la barre de menus, avec tous les boutons, les bons raccourcis et leurs actions respectives.
+	 * @return La barre de menus
+	 */
 	private JMenuBar createMenuBar() {
 
 		barreMenu = new JMenuBar();
@@ -93,6 +151,10 @@ public class Fenetre extends JFrame implements AffichageConstantes {
 		return barreMenu;
 	}
 
+	/**
+	 * Méthode qui créé la barre d'outils avec tous ses boutons, les bonnes images, les bons groupes et leurs fonctions respectives.
+	 * @return La barre d'outils
+	 */
 	private JToolBar createToolbar() {
 
 		barreOutils = new JToolBar();
